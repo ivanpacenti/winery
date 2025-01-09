@@ -10,7 +10,6 @@ export class LandingComponent {
   constructor(private router: Router) {}
 
   enterShop() {
-    // Qui puoi navigare alla pagina dello shop (quando esisterà)
-    this.router.navigate(['/shop']);
+    this.router.navigate(['shop']);
   }
 }
