@@ -33,7 +33,7 @@ export class UserActionsComponent {
 
   onLogoutClick() {
     console.log('Logout icon clicked');
-    // Puoi aggiungere logica per il logout qui
+    this.authService.logout();
   }
 
 }

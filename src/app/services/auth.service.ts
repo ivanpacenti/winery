@@ -1,34 +1,45 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticated = false;
-  private role = new BehaviorSubject<string | null>(null);
-  role$ = this.role.asObservable();
+  private tokenSubject = new BehaviorSubject<string | null>(null);
+  token$ = this.tokenSubject.asObservable();
+  role$: any;
 
-  login(username: string, password: string) {
-    // Simula una chiamata API e imposta il ruolo
-    const mockResponse = { token: 'jwt-token', role: 'Administrator' };
-    localStorage.setItem('token', mockResponse.token);
-    this.isAuthenticated = true; // Simula un login
-    this.role.next(mockResponse.role);
+  constructor(private http: HttpClient) {}
+
+  login(username: string, password: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>('http://localhost:5103/api/auth/login', { username, password }).pipe(
+      tap((response) => {
+        localStorage.setItem('token', response.token);
+        this.tokenSubject.next(response.token);
+      })
+    );
   }
 
   logout() {
     localStorage.removeItem('token');
-    this.isAuthenticated = false; // Simula un login
-
-    this.role.next(null);
-  }
-
-  getRole(): string | null {
-    return this.role.getValue();
+    this.tokenSubject.next(null);
   }
 
   checkAuth(): boolean {
-    return this.isAuthenticated;
+    return !!localStorage.getItem('token');
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token'); // Recupera il token
+  }
+
+  getRole(): string | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
   }
 }

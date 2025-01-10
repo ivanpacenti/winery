@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 
 @Directive({
   selector: '[appRole]',
+  standalone: true
 })
 export class RoleDirective {
   private currentRole: string | null = null;
@@ -12,7 +13,7 @@ export class RoleDirective {
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef
   ) {
-    this.authService.role$.subscribe((role) => {
+    this.authService.role$.subscribe((role: string | null) => {
       this.currentRole = role;
       this.updateView();
     });

@@ -1,22 +1,35 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-login-modal',
   standalone: true,
-  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  imports: [
+    FormsModule
+  ]
 })
 export class LoginModalComponent {
   @Output() close = new EventEmitter<void>();
 
   username = '';
   password = '';
+  errorMessage = '';
+
+  constructor(private authService: AuthService) {}
 
   onSubmit() {
-    console.log('Username:', this.username, 'Password:', this.password);
-    this.close.emit(); // Chiude il popup dopo il login
+    this.authService.login(this.username, this.password).subscribe({
+      next: () => {
+        console.log('Login successful');
+        this.close.emit(); // Chiude il popup
+      },
+      error: () => {
+        this.errorMessage = 'Invalid username or password';
+      },
+    });
   }
 
   closeModal() {
