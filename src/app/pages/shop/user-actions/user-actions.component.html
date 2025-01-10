@@ -5,4 +5,6 @@
   <button class="icon-button" (click)="onLogoutClick()">
     <img src="assets/icone/logout.png" alt="Logout Icon">
   </button>
+  <app-login-modal *ngIf="isLoginModalOpen" (close)="closeLoginModal()"></app-login-modal>
+
 </div>

@@ -1,5 +1,5 @@
 .user-actions {
-  display: flex;
+  display: compact;
   gap: 10px; /* Spaziatura tra le icone */
   align-items: center;
 }
@@ -19,4 +19,7 @@
 
 .icon-button:hover {
   transform: scale(1.1); /* Effetto hover */
+}
+body.modal-open {
+  overflow: hidden;
 }

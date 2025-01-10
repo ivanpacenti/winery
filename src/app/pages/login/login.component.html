@@ -1,0 +1,10 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="modal-content">
+  <form (ngSubmit)="onSubmit()">
+    <h2>Login</h2>
+    <input [(ngModel)]="username" name="username" placeholder="Username" required />
+    <input [(ngModel)]="password" name="password" placeholder="Password" type="password" required />
+    <button type="submit">Login</button>
+    <button type="button" (click)="closeModal()">Close</button>
+  </form>
+</div>
