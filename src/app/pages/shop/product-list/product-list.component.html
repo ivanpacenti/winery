@@ -8,7 +8,7 @@
 <div class="products-grid">
   <div *ngFor="let vino of vini" class="product">
     <img src='/assets/pecorino.jpg' alt="{{ vino.nome }}">
-    <h3>{{ vino.nome }}</h3>
+    <div class="titolo"><h3>{{ vino.nome }}</h3></div>
     <app-dettagli-list [prezzo]="vino.prezzo"></app-dettagli-list>
   </div>
 </div>

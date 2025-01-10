@@ -12,10 +12,35 @@
   border-radius: 15px; /* Angoli più arrotondati */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombra più visibile per profondità */
   text-align: center;
-  overflow: hidden; /* Assicura che i bordi siano arrotondati */
+  display: flex;
+  flex-direction: column; /* Disposizione verticale degli elementi */
+  align-items: center;
+  justify-content: space-between; /* Spaziatura uniforme */
+  padding: 16px;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animazioni per hover */
 }
+.titolo {
+  height: 3rem; /* Altezza fissa per mantenere consistenza tra i prodotti */
+  display: flex;
+  align-items: center; /* Centra verticalmente il contenuto */
+  justify-content: center; /* Centra orizzontalmente il testo */
+  text-align: center; /* Centra il testo se va su più righe */
+  overflow: hidden; /* Nasconde qualsiasi contenuto fuori dai bordi */
+}
 
+.titolo h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  line-height: 1.2rem; /* Spaziatura tra le righe */
+  color: #4a2c2a;
+  word-wrap: break-word; /* Permette di andare a capo se necessario */
+}
+
+
+app-dettagli-list {
+  margin-top: auto; /* Spinge il componente verso il basso */
+}
 .product:hover {
   transform: translateY(-5px); /* Effetto sollevamento */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Ombra più intensa su hover */
