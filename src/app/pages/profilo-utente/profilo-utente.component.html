@@ -1,0 +1,10 @@
+<div class="profile-container" *ngIf="utente; else noData">
+  <h2>Profilo Utente</h2>
+  <p><strong>Nome:</strong> {{ utente.nome }}</p>
+  <p><strong>Cognome:</strong> {{ utente.cognome }}</p>
+  <p><strong>Email:</strong> {{ utente.email }}</p>
+  <p><strong>Ruolo:</strong> {{ utente.ruolo }}</p>
+</div>
+<ng-template #noData>
+  <p>Nessun dato disponibile. Assicurati di aver effettuato il login.</p>
+</ng-template>

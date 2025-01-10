@@ -27,3 +27,7 @@
 .icon-button:hover {
   transform: scale(1.1); /* Effetto hover */
 }
+.icon-button:hover .favorite-icon {
+  content: url('/assets/icone/cuore_rosa.png'); /* Cambia immagine al passaggio del mouse */
+  transform: scale(1.1); /* Effetto di ingrandimento */
+}
