@@ -1,26 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ViniService } from '../../services/vini.service';
+import {Vino} from '../../models/VinoModel';
+import {UserActionsComponent} from './user-actions/user-actions.component';
 
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule, SidebarComponent, ProductListComponent],
+  imports: [CommonModule, SidebarComponent, ProductListComponent, UserActionsComponent],
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css']
 })
-export class ShopComponent {
-  products = [
-    { name: 'Rosso Piceno', category: 'red', price: 20, image: 'assets/rosso-piceno.jpg' },
-    { name: 'Verdicchio', category: 'white', price: 15, image: 'assets/verdicchio.jpg' },
-    { name: 'Rosso Conero', category: 'red', price: 25, image: 'assets/rosso-conero.jpg' },
-    { name: 'Pecorino', category: 'white', price: 18, image: 'assets/pecorino.jpg' },
-  ];
+export class ShopComponent implements OnInit {
+  vini: Vino[] = [];
+  filteredProducts: Vino[] = [];
 
-  filteredProducts = this.products;
+  constructor(private viniService: ViniService) {}
 
-  onCategorySelected(category: string) {
-    this.filteredProducts = this.products.filter(product => product.category === category);
+  ngOnInit(): void {
+    // Recupera i vini dal backend
+    this.viniService.getVini().subscribe({
+      next: (data) => {
+        this.vini = data;
+        this.filteredProducts = this.vini; // Inizializza la lista filtrata con tutti i vini
+      },
+      error: (err) => {
+        console.error('Errore durante il recupero dei vini:', err);
+      }
+    });
   }
+
+  onCategorySelected(category: string): void {
+
+    if (!category || category === 'Tutti') {
+      this.filteredProducts = this.vini; // Mostra tutti i vini
+    } else {
+      this.filteredProducts = this.vini.filter(product => product.categoria === category);
+    }
+  }
+
 }

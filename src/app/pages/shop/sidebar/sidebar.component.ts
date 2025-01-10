@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Output, EventEmitter } from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 export class SidebarComponent {
   @Output() categorySelected = new EventEmitter<string>();
 
-  selectCategory(category: string) {
+  selectCategory(category: string): void {
     this.categorySelected.emit(category);
   }
 }

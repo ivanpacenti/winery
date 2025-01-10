@@ -1,29 +1,112 @@
-.shop-container {
-  display: flex;
+:host {
+  display: block;
   height: 100vh;
+  background-image: url('/assets/vigneto.jpg'); /* Percorso all'immagine */
+  background-size: cover; /* Adatta l'immagine per coprire tutto lo sfondo */
+  background-position: center; /* Centra l'immagine */
+  background-attachment: fixed; /* Effetto parallax */
+  color: white; /* Colore del testo leggibile sullo sfondo */
 }
 
-.sidebar {
-  width: 250px;
-  background-color: #f4f4f4;
-  border-right: 1px solid #ddd;
-  padding: 20px;
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6); /* Sfondo semitrasparente per evidenziare il logo e le icone */
+  padding: 10px 20px;
+  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
 }
+
+.site-logo {
+  height: 60px;
+  width: auto;
+}
+
+.user-actions-container {
+  display: flex;
+  gap: 15px;
+}
+
+
+
+
 
 .product-list {
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
-}
-.shop-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra per evidenziare */
+  background-color: rgba(0, 0, 0, 0.6); /* Sfondo semitrasparente per evidenziare i prodotti */
+  /*border-left: 1px solid rgba(255, 255, 255, 0.2);*/
 }
 
-.site-logo {
-  height: 10%; /* Altezza del logo */
-  width: 10%; /* Mantiene le proporzioni */
+.product {
+
+  background-color: rgba(255, 255, 255, 0.8); /* Sfondo dei prodotti con un contrasto morbido */
+  border-radius: 10px;
+  padding: 50px;
+  margin: 10px;
+  text-align: center;
+  color: #333; /* Testo scuro per il contrasto */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.product p {
+  font-size: 1rem;
+  color: #800020;
+}
+.shop-container {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
+
+.sidebar {
+  flex: 0 0 20%; /* Sidebar occupa il 40% */
+  background-color: rgba(0, 0, 0, 0.6); /* Sfondo semitrasparente per sidebar */
+  padding: 16px;
+  overflow-y: auto;
+}
+/*.sidebar {*/
+/*  width: 40%;*/
+/*  background-color: rgba(0, 0, 0, 0.6); !* Sfondo semitrasparente per sidebar *!*/
+/*  border-right: 1px solid rgba(255, 255, 255, 0.2);*/
+/*  padding: 20px;*/
+/*  color: white;*/
+/*  overflow-y: auto;*/
+/*}*/
+.product-section {
+  flex: 1; /* Prodotti occupano il restante spazio */
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+@media (max-width: 768px) {
+  /*.shop-container {*/
+  /*  flex-direction: column; !* Sidebar sopra, prodotti sotto *!*/
+  /*}*/
+
+  .sidebar {
+    width: 100%; /* Sidebar occupa tutta la larghezza */
+  }
+}
+body.shop-body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Occupa l'altezza completa della finestra */
+  overflow: hidden; /* Previene scrolling indesiderato */
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
 }

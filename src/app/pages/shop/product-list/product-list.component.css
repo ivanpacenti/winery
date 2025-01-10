@@ -1,31 +1,48 @@
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Crea colonne adattive */
-  gap: 20px; /* Spaziatura tra gli elementi */
-  padding: 20px;
+  grid-template-columns: repeat(4, 1fr); /* Massimo 4 quadrati per riga */
+  gap: 16px; /* Spaziatura tra i quadrati */
+  padding: 16px; /* Margine interno */
+
 }
 
 .product {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8); /* Sfondo del prodotto */
+  border-radius: 10px; /* Angoli arrotondati */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra */
+  text-align: center; /* Centra il testo */
 }
 
 .product img {
-  width: 50%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  width: 50%; /* Larghezza dell'immagine */
+  height: auto; /* Mantiene le proporzioni */
+  border-radius: 10px; /* Arrotonda gli angoli */
+  display: block; /* Rimuove eventuali spazi bianchi sotto l'immagine */
+  margin: 20% auto 0; /* Aggiunge lo spazio sopra e centra l'immagine */
 }
+
 
 .product h3 {
   font-size: 1.2rem;
   margin: 10px 0;
+  color: black;
 }
 
 .product p {
-  font-size: 1rem;
+  font-size: 2rem;
   color: #800020;
 }
+
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dimensione minima ridotta */
+    gap: 15px; /* Riduci lo spazio per schermi piccoli */
+  }
+
+  .product {
+    width: calc(40vw);
+    max-width: 200px;
+    margin: 5px; /* Riduci il margine per evitare spazi eccessivi */
+  }
+}
+

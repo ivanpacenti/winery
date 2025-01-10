@@ -1,0 +1,22 @@
+.user-actions {
+  display: flex;
+  gap: 10px; /* Spaziatura tra le icone */
+  align-items: center;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s ease;
+}
+
+.icon-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-button:hover {
+  transform: scale(1.1); /* Effetto hover */
+}

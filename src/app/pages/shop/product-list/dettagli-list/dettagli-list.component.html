@@ -1,0 +1,9 @@
+<div class="dettagli-list">
+  <p class="price">{{ prezzo | currency:'EUR':'symbol' }}</p>
+  <button class="icon-button" (click)="onFavoriteClick()">
+    <img src="assets/icone/cuore.png" alt="Add to Favorites">
+  </button>
+  <button class="icon-button" (click)="onCartClick()">
+    <img src="assets/icone/carrello.png" alt="Add to Cart">
+  </button>
+</div>

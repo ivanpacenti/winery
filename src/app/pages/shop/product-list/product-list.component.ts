@@ -1,13 +1,18 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Vino} from '../../../models/VinoModel';
+import {DettagliListComponent} from './dettagli-list/dettagli-list.component';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './product-list.component.html',
+  templateUrl: './product-list.component.html', // Percorso relativo corretto
+  imports: [
+    NgForOf,
+    DettagliListComponent
+  ],
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-  @Input() products: any[] = [];
+  @Input() vini: Vino[] = [];
 }

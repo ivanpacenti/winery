@@ -1,7 +1,14 @@
+<!--<div class="products-grid">-->
+<!--  <div class="product" *ngFor="let vino of vini">-->
+<!--    <img src='/assets/pecorino.jpg' alt="{{ vino.nome }}">-->
+<!--    <h3>{{ vino.nome }}</h3>-->
+<!--    <app-dettagli-list [prezzo]="vino.prezzo"></app-dettagli-list>-->
+<!--  </div>-->
+<!--</div>-->
 <div class="products-grid">
-  <div class="product" *ngFor="let product of products">
-    <img [src]="product.image" alt="{{ product.name }}">
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.price | currency }}</p>
+  <div *ngFor="let vino of vini" class="product">
+    <img src='/assets/pecorino.jpg' alt="{{ vino.nome }}">
+    <h3>{{ vino.nome }}</h3>
+    <app-dettagli-list [prezzo]="vino.prezzo"></app-dettagli-list>
   </div>
 </div>

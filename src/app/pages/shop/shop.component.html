@@ -1,11 +1,15 @@
+<body class="shop-body">
 <header class="shop-header">
   <img src="assets/logo.png" alt="Site Logo" class="site-logo">
+  <app-user-actions class="user-actions-container"></app-user-actions>
+
 </header>
 <div class="shop-container">
   <div class="sidebar">
     <app-sidebar (categorySelected)="onCategorySelected($event)"></app-sidebar>
   </div>
   <div class="product-list">
-    <app-product-list [products]="filteredProducts"></app-product-list>
+    <app-product-list [vini]="filteredProducts"></app-product-list>
   </div>
 </div>
+</body>
