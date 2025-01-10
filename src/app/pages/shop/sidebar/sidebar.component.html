@@ -1,5 +1,11 @@
 <ul class="category-menu">
-  <li (click)="selectCategory('Tutti')">Tutti</li>
-  <li (click)="selectCategory('Rosso')">Vini Rossi</li>
-  <li (click)="selectCategory('Bianco')">Vini Bianchi</li>
+  <li
+    [class.active]="selectedCategory === 'Tutti'"
+    (click)="selectCategory('Tutti')">Tutti</li>
+  <li
+    [class.active]="selectedCategory === 'Rosso'"
+    (click)="selectCategory('Rosso')">Vini Rossi</li>
+  <li
+    [class.active]="selectedCategory === 'Bianco'"
+    (click)="selectCategory('Bianco')">Vini Bianchi</li>
 </ul>

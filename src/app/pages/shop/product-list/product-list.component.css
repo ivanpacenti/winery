@@ -1,48 +1,55 @@
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Massimo 4 quadrati per riga */
-  gap: 16px; /* Spaziatura tra i quadrati */
-  padding: 16px; /* Margine interno */
-
+  gap: 24px; /* Spaziatura tra i quadrati maggiore per aria */
+  padding: 24px; /* Margine interno */
+  /*background-color: #f7f3e9; !* Sfondo tenue ispirato al vino *!*/
+  border-radius: 15px;
 }
 
 .product {
-  background-color: rgba(255, 255, 255, 0.8); /* Sfondo del prodotto */
-  border-radius: 10px; /* Angoli arrotondati */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra */
-  text-align: center; /* Centra il testo */
+  background-color: rgba(255, 255, 255, 0.8); /* Sfondo bianco traslucido */
+  border-radius: 15px; /* Angoli più arrotondati */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombra più visibile per profondità */
+  text-align: center;
+  overflow: hidden; /* Assicura che i bordi siano arrotondati */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animazioni per hover */
+}
+
+.product:hover {
+  transform: translateY(-5px); /* Effetto sollevamento */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Ombra più intensa su hover */
 }
 
 .product img {
-  width: 50%; /* Larghezza dell'immagine */
-  height: auto; /* Mantiene le proporzioni */
-  border-radius: 10px; /* Arrotonda gli angoli */
-  display: block; /* Rimuove eventuali spazi bianchi sotto l'immagine */
-  margin: 20% auto 0; /* Aggiunge lo spazio sopra e centra l'immagine */
+  width: 80%; /* Immagine più grande e centrale */
+  height: auto;
+  border-radius: 10px;
+  margin: 16px auto 8px;
 }
 
-
 .product h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* Testo più grande */
   margin: 10px 0;
-  color: black;
+  color: #4a2c2a; /* Marrone caldo ispirato al vino */
+  font-family: 'Georgia', serif; /* Font elegante */
 }
 
 .product p {
-  font-size: 2rem;
-  color: #800020;
+  font-size: 1.3rem;
+  color: #800020; /* Rosso Bordeaux */
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {
   .products-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dimensione minima ridotta */
-    gap: 15px; /* Riduci lo spazio per schermi piccoli */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
   }
 
   .product {
     width: calc(40vw);
     max-width: 200px;
-    margin: 5px; /* Riduci il margine per evitare spazi eccessivi */
+    margin: 5px;
   }
 }
-

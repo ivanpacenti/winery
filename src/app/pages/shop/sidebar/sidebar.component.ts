@@ -9,9 +9,11 @@ import {CommonModule} from '@angular/common';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+  selectedCategory: string | null = "Tutti"; // Traccia la categoria selezionata
   @Output() categorySelected = new EventEmitter<string>();
 
   selectCategory(category: string): void {
+    this.selectedCategory = category; // Aggiorna lo stato locale
     this.categorySelected.emit(category);
   }
 }
