@@ -1,25 +1,131 @@
-.profile-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Sfondo scuro e trasparente */
+  z-index: 1000;
 }
 
-h2 {
+/* Modal content */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #faf5f0; /* Sfondo chiaro con una sfumatura calda */
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ombra per effetto elegante */
+  width: 90%;
+  max-width: 400px;
+  z-index: 1001;
   text-align: center;
+  font-family: 'Georgia', serif; /* Font elegante per richiamare il tema vino */
+}
+
+/* Header del profilo */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #800020; /* Bordo rosso vino */
   margin-bottom: 20px;
-  color: #333;
+  padding-bottom: 10px;
+}
+
+.profile-header h2 {
+  font-size: 1.8rem;
+  color: #800020; /* Rosso vino */
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #800020; /* Rosso vino */
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.close-button:hover {
+  color: #a0002d; /* Tonalità più chiara */
+  transform: scale(1.1);
+}
+
+/* Dettagli del profilo */
+.profile-details {
+  margin-top: 15px;
+  text-align: left;
 }
 
 .profile-details p {
-  font-size: 1.2rem;
   margin: 10px 0;
-  color: #555;
+  font-size: 1rem;
+  color: #555; /* Testo più chiaro */
 }
 
-.profile-details strong {
-  color: #800020;
+.profile-details p strong {
+  color: #800020; /* Rosso vino per evidenziare */
+}
+
+/* Pulsanti Azione */
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.action-buttons .btn {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary {
+  background-color: #800020; /* Rosso vino */
+  color: white;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #a0002d; /* Tonalità più chiara */
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: #f0e4d7; /* Sfondo chiaro legno */
+  color: #555;
+  font-weight: bold;
+}
+
+.btn-secondary:hover {
+  background-color: #e6d6c5; /* Tonalità più scura */
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 20px;
+  }
+
+  .profile-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .profile-details p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+  }
 }

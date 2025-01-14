@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import {NgIf} from '@angular/common';
-import {Utente} from '../../models/UtenteModel';
+import { Utente } from '../../models/UtenteModel';
 
 @Component({
   selector: 'app-profilo-utente',
   standalone: true,
   templateUrl: './profilo-utente.component.html',
-  styleUrls: ['./profilo-utente.component.css'],
-  imports: [
-    NgIf
-  ]
+  styleUrls: ['./profilo-utente.component.css']
 })
-export class UserProfileComponent implements OnInit {
-  utente: Utente | null = null;
+export class UserProfileComponent {
+  @Output() close = new EventEmitter<void>();
+  user: Utente | null = null;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.utente = this.authService.getUserDetails();
+    this.user = this.authService.getUserDetails();
+  }
+
+  closeModal(): void {
+    this.close.emit();
   }
 }

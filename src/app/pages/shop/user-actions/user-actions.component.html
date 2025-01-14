@@ -5,6 +5,16 @@
   <button class="icon-button" (click)="onLogoutClick()">
     <img src="assets/icone/logout.png" alt="Logout Icon">
   </button>
-  <app-login-modal *ngIf="isLoginModalOpen" (close)="closeLoginModal()"></app-login-modal>
+</div>
 
+<!-- Popup di Login -->
+<app-login-modal
+  *ngIf="isLoginModalOpen"
+  (close)="closeLoginModal()"
+  class="modal-overlay">
+</app-login-modal>
+
+<!-- Popup del Profilo Utente -->
+<div *ngIf="isProfileModalOpen" class="modal-overlay">
+  <app-profilo-utente (close)="closeProfileModal()"></app-profilo-utente>
 </div>

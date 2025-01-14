@@ -1,39 +1,56 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
-import {AuthService} from '../../../services/auth.service';
-import {LoginModalComponent} from '../../login/login.component';
-import {NgIf} from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
+import { LoginModalComponent } from '../../login/login.component';
+import { UserProfileComponent } from '../../profilo-utente/profilo-utente.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-user-actions',
   standalone: true,
   imports: [
     LoginModalComponent,
-    NgIf
+    NgIf,
+    UserProfileComponent
   ],
   templateUrl: './user-actions.component.html',
   styleUrls: ['./user-actions.component.css']
 })
 export class UserActionsComponent {
   isLoginModalOpen = false;
+  isProfileModalOpen = false;
+  isLogoutConfirmOpen = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+
+  constructor(private authService: AuthService) {}
+
   onUserClick() {
     if (this.authService.checkAuth()) {
-      this.router.navigate(['profile']); // Naviga al profilo se l'utente è loggato
+      this.isProfileModalOpen = true;
     } else {
-      this.isLoginModalOpen = true; // Mostra il popup di login se non loggato
+      this.isLoginModalOpen = true;
     }
+    document.body.classList.add('modal-open');
   }
 
   closeLoginModal() {
-    this.isLoginModalOpen = false; // Chiude il popup
+    this.isLoginModalOpen = false;
+    this.cleanupModalState();
   }
 
+  closeProfileModal() {
+    this.isProfileModalOpen = false;
+    this.cleanupModalState();
+  }
 
   onLogoutClick() {
-    console.log('Logout icon clicked');
     this.authService.logout();
+    this.isLogoutConfirmOpen = true;
+    document.body.classList.add('modal-open');
   }
 
+  private cleanupModalState() {
+    if (!this.isLoginModalOpen && !this.isProfileModalOpen) {
+      document.body.classList.remove('modal-open');
+    }
+  }
 }
