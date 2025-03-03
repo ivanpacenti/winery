@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing dependencies..."
+      - npm install -g @angular/cli
+      - npm install
+  build:
+    commands:
+      - echo "Building Angular App..."
+      - ng build --configuration=production
+  post_build:
+    commands:
+      - echo "Running Tests..."
+#      - npm test  # Esegue i test (modifica se usi Jest/Karma)
+      - echo "Deploying to S3..."
+      - aws s3 sync dist/frontend s3://lemarchewine.com/index.html --delete
+      - echo "Invalidating CloudFront cache..."
+      - aws cloudfront create-invalidation --distribution-id E32QBSTNYFGPT0 --paths "/*"
+artifacts:
+  files:
+    - "**/*"
+  base-directory: "dist/frontend"
