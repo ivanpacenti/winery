@@ -16,7 +16,7 @@ phases:
       - echo "Running Tests..."
 #      - npm test  # Esegue i test (modifica se usi Jest/Karma)
       - echo "Deploying to S3..."
-      - aws s3 sync dist/Winery s3://lemarchewine.com/index.html --delete
+      - aws s3 sync dist/frontend s3://lemarchewine.com/index.html --delete
       - echo "Invalidating CloudFront cache..."
       - aws cloudfront create-invalidation --distribution-id E32QBSTNYFGPT0 --paths "/*"
 artifacts:
