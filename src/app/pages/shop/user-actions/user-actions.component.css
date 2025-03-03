@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+
 .user-actions {
-  display: compact;
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
+  margin-right: 15px;
 }
 
 .icon-button {
@@ -16,6 +21,13 @@
   width: 24px;
   height: 24px;
 }
+.welcome-message {
+  font-size: 2rem;
+  /*color: #800020; !* Colore rosso vino *!*/
+  margin: 0;
+  text-align: center;
+  font-family: 'Dancing Script', cursive;}
+
 
 .modal-overlay {
   position: fixed;

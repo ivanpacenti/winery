@@ -19,7 +19,20 @@ export class UserActionsComponent {
   isLoginModalOpen = false;
   isProfileModalOpen = false;
   isLogoutConfirmOpen = false;
+  userName: string | null = null; // Variabile per il nome utente
 
+  ngOnInit() {
+    this.setUserName(); // Imposta il nome utente all'avvio
+  }
+
+  setUserName() {
+    if (this.authService.checkAuth()) {
+      const userDetails = this.authService.getUserDetails();
+      this.userName = userDetails?.nome || null; // Imposta il nome utente
+    } else {
+      this.userName = null; // Resetta il nome utente se non loggato
+    }
+  }
 
   constructor(private authService: AuthService) {}
 
@@ -35,6 +48,8 @@ export class UserActionsComponent {
   closeLoginModal() {
     this.isLoginModalOpen = false;
     this.cleanupModalState();
+    this.setUserName(); // Aggiorna il nome utente dopo il login
+
   }
 
   closeProfileModal() {
@@ -45,6 +60,7 @@ export class UserActionsComponent {
   onLogoutClick() {
     this.authService.logout();
     this.isLogoutConfirmOpen = true;
+    this.userName = null; // Resetta il nome utente dopo il logout
     document.body.classList.add('modal-open');
   }
 
@@ -52,5 +68,9 @@ export class UserActionsComponent {
     if (!this.isLoginModalOpen && !this.isProfileModalOpen) {
       document.body.classList.remove('modal-open');
     }
+  }
+
+  onFavoritesClick() {
+    
   }
 }

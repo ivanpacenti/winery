@@ -1,9 +1,13 @@
 <div class="user-actions">
+  <p *ngIf="userName" class="welcome-message">Welcome, {{ userName }}!</p>
   <button class="icon-button" (click)="onUserClick()">
     <img src="assets/icone/utente.png" alt="User Icon">
   </button>
   <button class="icon-button" (click)="onLogoutClick()">
     <img src="assets/icone/logout.png" alt="Logout Icon">
+  </button>
+  <button class="icon-button" (click)="onFavoritesClick()">
+    <img src="assets/icone/cuore.png" alt="Logout Icon">
   </button>
 </div>
 
